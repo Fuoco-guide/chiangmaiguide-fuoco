@@ -231,6 +231,32 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
   .expanded-inner{padding:12px}
 }
 
+/* ── ADMIN EDIT ── */
+#admin-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(14,13,11,0.97);border-top:1px solid rgba(212,67,15,0.35);padding:10px 24px;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+.admin-bar-label{font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--fire2);font-family:'Syne',sans-serif}
+.admin-dl-btn{background:var(--fire);color:#fff;border:none;padding:9px 20px;font-family:'Syne',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:background 0.2s;white-space:nowrap}
+.admin-dl-btn:hover{background:var(--fire2)}
+.edit-pencil-btn{position:absolute;top:8px;right:8px;z-index:5;background:rgba(212,67,15,0.12);border:1px solid rgba(212,67,15,0.35);color:var(--fire2);font-size:14px;width:26px;height:26px;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;padding:0;line-height:1}
+.edit-pencil-btn:hover{background:rgba(212,67,15,0.28)}
+#edit-panel{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.95);overflow-y:auto}
+.ep-inner{width:100%;max-width:580px;background:#1a1917;padding:36px;font-family:'DM Sans',sans-serif;color:#f2ede4;margin:40px auto 100px}
+.ep-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.ep-title{font-family:'Syne',sans-serif;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--fire2)}
+.ep-close{background:none;border:none;color:#f2ede4;font-size:26px;cursor:pointer;line-height:1}
+.ep-section{background:#111;border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px;margin-bottom:14px}
+.ep-sec-title{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.ep-field{margin-bottom:14px}
+.ep-field:last-child{margin-bottom:0}
+.ep-label{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:#7a7060;margin-bottom:5px;display:block}
+.ep-input{width:100%;background:#1a1917;border:1px solid rgba(255,255,255,0.12);color:#f2ede4;font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 12px;border-radius:6px;resize:vertical;box-sizing:border-box;transition:border-color 0.2s}
+.ep-input:focus{outline:none;border-color:rgba(212,67,15,0.5)}
+.ep-checks{display:flex;flex-wrap:wrap;gap:12px 20px}
+.ep-check{display:flex;align-items:center;gap:6px;font-size:12px;color:#f2ede4;cursor:pointer;user-select:none}
+.ep-check input{accent-color:var(--fire2);width:14px;height:14px;cursor:pointer}
+.ep-save{width:100%;background:var(--fire);color:#fff;border:none;padding:14px;font-family:'Syne',sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;border-radius:6px;margin-top:6px;transition:background 0.2s}
+.ep-save:hover{background:var(--fire2)}
+.ep-status{font-size:12px;color:var(--gold);margin-top:12px;min-height:18px;text-align:center}
+
 /* ── ANIMATIONS ── */
 @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
@@ -255,7 +281,7 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="hero-bg"></div>
   <div class="hero-photo" id="hero-photo-bg"><span style="display:none"></span></div>
   <div class="hero-overlay"></div>
-  <button id="hero-upload-btn" onclick="document.getElementById('hero-input').click()" style="position:absolute;top:16px;right:16px;z-index:10;background:rgba(14,13,11,0.82);border:1px solid #555;color:#c9a84c;font-size:9px;letter-spacing:0.1em;padding:6px 12px;cursor:pointer;font-family:Syne,sans-serif;text-transform:uppercase;border-radius:4px;">🖼 Hero Photo</button>
+  <button id="hero-upload-btn" onclick="document.getElementById('hero-input').click()" style="display:none;position:absolute;top:16px;right:16px;z-index:10;background:rgba(14,13,11,0.82);border:1px solid #555;color:#c9a84c;font-size:9px;letter-spacing:0.1em;padding:6px 12px;cursor:pointer;font-family:Syne,sans-serif;text-transform:uppercase;border-radius:4px;">🖼 Hero Photo</button>
   <input type="file" id="hero-input" accept="image/*" style="display:none;" onchange="fuocoSetHero(this)">
   <div class="hero-content">
     <div class="hero-eyebrow">Fuoco · Field Guide No. 001</div>
@@ -346,6 +372,88 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
 
 <!-- KML TOAST -->
 <div class="kml-toast" id="kmlToast">✓ File downloaded — import into Google Maps → Your places → Import</div>
+
+<!-- ADMIN BAR -->
+<div id="admin-bar">
+  <span class="admin-bar-label">⚙ Admin Mode — fuoco</span>
+  <button class="admin-dl-btn" onclick="fuocoDownload()">⬇ Download Updated HTML</button>
+</div>
+
+<!-- EDIT PANEL -->
+<div id="edit-panel">
+  <div class="ep-inner">
+    <div class="ep-head">
+      <span class="ep-title" id="ep-title">EDIT LISTING</span>
+      <button class="ep-close" onclick="closeEditPanel()">✕</button>
+    </div>
+
+    <div class="ep-section">
+      <div class="ep-sec-title">— Text Fields</div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-story">The Story</label>
+        <textarea class="ep-input" id="ep-story" rows="5"></textarea>
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-honest">The Honest Part</label>
+        <textarea class="ep-input" id="ep-honest" rows="4"></textarea>
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-hidden">What Nobody Writes About</label>
+        <textarea class="ep-input" id="ep-hidden" rows="3"></textarea>
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-orders">Orders — one item per line</label>
+        <textarea class="ep-input" id="ep-orders" rows="6" placeholder="⭐ Dish Name&#10;Dish Name 2"></textarea>
+      </div>
+    </div>
+
+    <div class="ep-section">
+      <div class="ep-sec-title">— Info Fields</div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-price">Price Range (e.g. ฿50–120)</label>
+        <input class="ep-input" id="ep-price" type="text">
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-hours">Hours (e.g. 17:00–22:00 · Closed Mon)</label>
+        <input class="ep-input" id="ep-hours" type="text">
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-payment">Payment (e.g. Cash · QR Code)</label>
+        <input class="ep-input" id="ep-payment" type="text">
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-address">Address</label>
+        <input class="ep-input" id="ep-address" type="text">
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-phone">Phone</label>
+        <input class="ep-input" id="ep-phone" type="text">
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-instagram">Instagram (handle or full URL)</label>
+        <input class="ep-input" id="ep-instagram" type="text">
+      </div>
+      <div class="ep-field">
+        <label class="ep-label" for="ep-mapsurl">Google Maps URL</label>
+        <input class="ep-input" id="ep-mapsurl" type="text">
+      </div>
+    </div>
+
+    <div class="ep-section">
+      <div class="ep-sec-title">— Tags</div>
+      <div class="ep-checks">
+        <label class="ep-check"><input type="checkbox" id="ep-veg"> 🥬 Vegetarian</label>
+        <label class="ep-check"><input type="checkbox" id="ep-vegan"> 🌱 Vegan</label>
+        <label class="ep-check"><input type="checkbox" id="ep-fish"> 🐟 Seafood</label>
+        <label class="ep-check"><input type="checkbox" id="ep-meat"> 🥩 Meat</label>
+        <label class="ep-check"><input type="checkbox" id="ep-parking"> 🅿️ Parking</label>
+      </div>
+    </div>
+
+    <button class="ep-save" onclick="saveEditPanel()">SAVE CHANGES</button>
+    <div class="ep-status" id="ep-status"></div>
+  </div>
+</div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── RENDER HELPERS ───────────────────────────────────────────────────────
@@ -655,6 +763,7 @@ function renderCards(places) {
     const timeStr = Array.isArray(p.time) ? p.time.join(',') : p.time;
     return `
     <div class="place-card fade-in" id="card-${p.id}" style="position:relative;" data-id="${p.id}" data-cat="${p.cat}" data-time="${timeStr}" onclick="highlightFromCard(${p.id})">
+      ${ADMIN_MODE ? `<button class="edit-pencil-btn" onclick="event.stopPropagation();openEditPanel(${p.id})" title="Edit listing">✎</button>` : ''}
       <div class="card-top">
         <div class="card-photo">
           <div class="card-photo-inner" style="background:linear-gradient(135deg,${cc.color}22,${cc.color}11);overflow:hidden">
@@ -662,12 +771,12 @@ function renderCards(places) {
           </div>
           <div class="card-cat-badge" style="background:${cc.color}">${cc.emoji} ${cc.label}</div>
         </div>
-        
+
         <div class="card-info">
           <div>
             <div class="card-meta" style="justify-content:space-between;">
               <span class="card-time-badge">⏰ ${p.timeLabel}</span>
-              <button onclick="event.stopPropagation();openPhotoPanel(${p.id})" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:#c9a84c;font-size:8px;letter-spacing:0.1em;padding:3px 8px;cursor:pointer;font-family:Syne,sans-serif;text-transform:uppercase;border-radius:4px;white-space:nowrap;">&#x1F4F7; Photos</button>
+              ${ADMIN_MODE ? `<button onclick="event.stopPropagation();openPhotoPanel(${p.id})" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:#c9a84c;font-size:8px;letter-spacing:0.1em;padding:3px 8px;cursor:pointer;font-family:Syne,sans-serif;text-transform:uppercase;border-radius:4px;white-space:nowrap;">&#x1F4F7; Photos</button>` : ''}
             </div>
             <div class="card-name">${p.name}</div>
             <div class="card-sub">${p.price}</div>
@@ -1154,8 +1263,83 @@ function fuocoDownload() {
   a.href = URL.createObjectURL(blob);
   a.download = 'FUOCO_ChiangMai_WORKING.html';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  document.getElementById('photo-status').textContent = 'Downloaded! This is your new master file.';
+  var ps = document.getElementById('photo-status');
+  if (ps) ps.textContent = 'Downloaded! This is your new master file.';
 }
+</script>
+
+<script>
+// ── ADMIN MODE ────────────────────────────────────────────────────────────
+var ADMIN_MODE = (new URLSearchParams(window.location.search)).get('admin') === 'fuoco';
+var editTargetId = null;
+
+if (ADMIN_MODE) {
+  document.getElementById('admin-bar').style.display = 'flex';
+  document.getElementById('hero-upload-btn').style.display = 'block';
+  document.body.style.paddingBottom = '52px';
+}
+
+function openEditPanel(placeId) {
+  var p = PLACES.find(function(x){ return x.id === placeId; });
+  if (!p) return;
+  editTargetId = placeId;
+  document.getElementById('ep-title').textContent = 'EDIT — ' + p.name.toUpperCase();
+  document.getElementById('ep-story').value = p.story || '';
+  document.getElementById('ep-honest').value = p.honest || '';
+  document.getElementById('ep-hidden').value = p.hidden || '';
+  document.getElementById('ep-orders').value = (p.orders || []).join('\n');
+  document.getElementById('ep-price').value = p.price || '';
+  document.getElementById('ep-hours').value = p.hours || '';
+  document.getElementById('ep-payment').value = p.payment || '';
+  document.getElementById('ep-address').value = p.address || '';
+  document.getElementById('ep-phone').value = p.phone || '';
+  document.getElementById('ep-instagram').value = p.instagram || '';
+  document.getElementById('ep-mapsurl').value = p.mapsUrl || '';
+  document.getElementById('ep-veg').checked = !!p.veg;
+  document.getElementById('ep-vegan').checked = !!p.vegan;
+  document.getElementById('ep-fish').checked = !!p.fish;
+  document.getElementById('ep-meat').checked = !!p.meat;
+  document.getElementById('ep-parking').checked = !!p.parking;
+  document.getElementById('ep-status').textContent = '';
+  document.getElementById('edit-panel').style.display = 'block';
+  document.getElementById('edit-panel').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEditPanel() {
+  document.getElementById('edit-panel').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function saveEditPanel() {
+  var p = PLACES.find(function(x){ return x.id === editTargetId; });
+  if (!p) return;
+  p.story    = document.getElementById('ep-story').value.trim();
+  p.honest   = document.getElementById('ep-honest').value.trim();
+  p.hidden   = document.getElementById('ep-hidden').value.trim();
+  var ordersRaw = document.getElementById('ep-orders').value;
+  p.orders   = ordersRaw.split('\n').map(function(s){ return s.trim(); }).filter(function(s){ return s.length > 0; });
+  p.price    = document.getElementById('ep-price').value.trim();
+  p.hours    = document.getElementById('ep-hours').value.trim();
+  p.payment  = document.getElementById('ep-payment').value.trim();
+  p.address  = document.getElementById('ep-address').value.trim();
+  p.phone    = document.getElementById('ep-phone').value.trim();
+  p.instagram= document.getElementById('ep-instagram').value.trim();
+  p.mapsUrl  = document.getElementById('ep-mapsurl').value.trim();
+  p.veg      = document.getElementById('ep-veg').checked;
+  p.vegan    = document.getElementById('ep-vegan').checked;
+  p.fish     = document.getElementById('ep-fish').checked;
+  p.meat     = document.getElementById('ep-meat').checked;
+  p.parking  = document.getElementById('ep-parking').checked;
+  renderCards(PLACES);
+  document.getElementById('ep-status').textContent = '✅ Saved in memory. Download to keep permanently.';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('edit-panel').style.display === 'block') {
+    closeEditPanel();
+  }
+});
 </script>
 </body>
 </html>
