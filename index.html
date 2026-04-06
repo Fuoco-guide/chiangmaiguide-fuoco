@@ -462,11 +462,18 @@ function cardBadges(p) {
   const price = p.priceLevel === 1 ? '<span class="badge badge-price-1">💸' + t('Cheap') + '</span>'
               : p.priceLevel === 2 ? '<span class="badge badge-price-2">💸💸' + t('Mid') + '</span>'
               : p.priceLevel === 3 ? '<span class="badge badge-price-3">💸💸💸' + t('Pricey') + '</span>' : '';
+  const park = p.parking === true ? '<span class="badge yes">🅿️' + t('Parking') + '</span>' : '';
+  if (p.cat === 'bakery') {
+    const vien = p.viennoiserie ? '<span class="badge yes">🥐' + t('Viennoiserie') + '</span>' : '';
+    const bred = p.bread       ? '<span class="badge yes">🥖' + t('Bread') + '</span>' : '';
+    const fine = p.finePastry  ? '<span class="badge yes">🍰' + t('Fine Pastry') + '</span>' : '';
+    const coff = p.coffee      ? '<span class="badge yes">☕' + t('Coffee') + '</span>' : '';
+    return '<div class="card-badges">' + price + vien + bred + fine + coff + park + '</div>';
+  }
   const veg  = p.veg  ? '<span class="badge yes">🥬' + t('Veg') + '</span>' : '';
   const vegan = p.vegan ? '<span class="badge yes" style="background:rgba(40,180,100,0.15);color:#4dbd84;border-color:rgba(40,180,100,0.3)">🌱' + t('Vegan') + '</span>' : '';
   const fish = p.fish ? '<span class="badge yes">🐟' + t('Seafood') + '</span>' : '';
   const meat = p.meat ? '<span class="badge yes">🥩' + t('Meat') + '</span>' : '';
-  const park = p.parking === true ? '<span class="badge yes">🅿️' + t('Parking') + '</span>' : '';
   return '<div class="card-badges">' + price + veg + vegan + fish + meat + park + '</div>';
 }
 
