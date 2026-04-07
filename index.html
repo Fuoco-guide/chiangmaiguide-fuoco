@@ -111,6 +111,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .cig-row{display:grid;grid-template-columns:1fr 1fr;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);gap:12px}
 .cig-row:last-child{border-bottom:none}
 .cig-cell{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cig-label-row{display:flex;align-items:center;gap:4px}
+.cig-emoji{font-size:10px;opacity:1}
 .cig-label{color:rgba(255,255,255,0.25);font-size:9px;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap}
 .cig-val{color:rgba(255,255,255,0.85);line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .order-pill{font-size:9px;background:rgba(212,67,15,0.08);border:1px solid rgba(212,67,15,0.25);color:var(--fire2);padding:3px 9px;border-radius:4px;white-space:nowrap}
@@ -496,11 +498,11 @@ function cardInfoGrid(p) {
   const address = p.address ? '<a href="https://www.google.com/maps/search/' + encodeURIComponent(p.name) + '/@' + p.lat + ',' + p.lng + ',17z" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">' + p.address + ' ↗</a>' : (p.howto || '—');
   const phone = p.phone ? '<a href="tel:' + p.phone + '" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">' + p.phone + '</a>' : '—';
   const social = p.instagram ? '<a href="' + (p.instagram.startsWith('http') ? p.instagram : 'https://instagram.com/' + p.instagram) + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">@' + (p.instagram.startsWith('http') ? p.instagram.replace(/.*instagram\.com\//,'').replace(/\//,'') : p.instagram) + ' ↗</a>' : p.facebook ? '<a href="' + p.facebook + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Facebook ↗</a>' : '—';
-  const cell = (label, val) => '<div class="cig-cell"><span class="cig-label">' + label + '</span><span class="cig-val">' + val + '</span></div>';
+  const cell = (emoji, label, val) => '<div class="cig-cell"><div class="cig-label-row"><span class="cig-emoji">' + emoji + '</span><span class="cig-label">' + label + '</span></div><span class="cig-val">' + val + '</span></div>';
   return '<div class="card-info-grid">' +
-    '<div class="cig-row">' + cell('💸 Price', p.price || '—') + cell('🕐 Hours', p.hours || '—') + '</div>' +
-    '<div class="cig-row">' + cell('💳 Payment', p.payment || '—') + cell('📍 Address', address) + '</div>' +
-    '<div class="cig-row">' + cell('📞 Phone', phone) + cell('📸 Social', social) + '</div>' +
+    '<div class="cig-row">' + cell('💸','Price', p.price || '—') + cell('🕐','Hours', p.hours || '—') + '</div>' +
+    '<div class="cig-row">' + cell('💳','Payment', p.payment || '—') + cell('📍','Address', address) + '</div>' +
+    '<div class="cig-row">' + cell('📞','Phone', phone) + cell('📸','Social', social) + '</div>' +
   '</div>';
 }
 
