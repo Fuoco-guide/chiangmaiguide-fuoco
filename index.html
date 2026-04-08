@@ -120,8 +120,11 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* Expand */
 .card-expand-btn{width:100%;background:transparent;border:none;border-top:1px solid var(--border);padding:10px 16px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:space-between}
 .card-expand-btn:hover{color:var(--cream);background:rgba(255,255,255,0.02)}
+.expand-right{display:flex;align-items:center;gap:10px}
 .expand-arrow{transition:transform 0.3s}
 .card-expand-btn.open .expand-arrow{transform:rotate(180deg)}
+.gallery-tag{font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fire2);border:1px solid rgba(212,67,15,0.3);padding:3px 8px;border-radius:100px;background:rgba(212,67,15,0.06);transition:all 0.2s}
+.card-expand-btn:hover .gallery-tag{background:rgba(212,67,15,0.12);border-color:rgba(212,67,15,0.5)}
 .card-expanded{max-height:0;overflow:hidden;transition:max-height 0.45s ease}
 .card-expanded.open{max-height:700px}
 .expanded-inner{padding:16px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--border)}
@@ -1017,7 +1020,10 @@ function renderCards(places) {
       </div>
       <button class="card-expand-btn" onclick="event.stopPropagation();toggleExpand(this,${p.id})">
         <span>The full story</span>
-        <span class="expand-arrow">↓</span>
+        <span class="expand-right">
+          ${p.slides && p.slides.filter(s=>s.img).length > 0 ? `<span class="gallery-tag">📷 ${p.slides.filter(s=>s.img).length} photos</span>` : ''}
+          <span class="expand-arrow">↓</span>
+        </span>
       </button>
       <div class="card-expanded" id="exp-${p.id}">
         <div class="expanded-inner">
