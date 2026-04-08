@@ -315,8 +315,8 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
 <!-- LEGEND -->
 <div class="legend fade-in">
   <span class="legend-label">Categories →</span>
-  <span class="legend-item"><span class="legend-dot" style="background:var(--street)"></span>Local Food</span>
-  <span class="legend-item"><span class="legend-dot" style="background:var(--sitdown)"></span>Sit Down</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--street)"></span>Street Eats</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--sitdown)"></span>Local Restaurants</span>
   <span class="legend-item"><span class="legend-dot" style="background:var(--coffee)"></span>Coffee</span>
   <span class="legend-item"><span class="legend-dot" style="background:var(--wine)"></span>Wine</span>
   <span class="legend-item"><span class="legend-dot" style="background:var(--bakery)"></span>Bakery</span>
@@ -327,8 +327,8 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="filter-row">
     <!-- Category filters -->
     <button class="f-btn active" data-cat="all" onclick="setFilter('cat','all',this)">All</button>
-    <button class="f-btn" data-cat="street" onclick="setFilter('cat','street',this)">🌶 Local Food</button>
-    <button class="f-btn" data-cat="sitdown" onclick="setFilter('cat','sitdown',this)">🍽 Sit Down</button>
+    <button class="f-btn" data-cat="street" onclick="setFilter('cat','street',this)">🌶 Street Eats</button>
+    <button class="f-btn" data-cat="sitdown" onclick="setFilter('cat','sitdown',this)">🍽 Local Restaurants</button>
     <button class="f-btn" data-cat="coffee" onclick="setFilter('cat','coffee',this)">☕ Coffee</button>
     <button class="f-btn" data-cat="wine" onclick="setFilter('cat','wine',this)">🍷 Wine</button>
     <button class="f-btn" data-cat="bakery" onclick="setFilter('cat','bakery',this)">🥐 Bakery</button>
@@ -524,7 +524,7 @@ function cardGallery(p) {
 // ── DATA ──────────────────────────────────────────────────────────────────
 const PLACES = [
   // STREET FOOD (8)
-{id:1, name:"Chef Apple", local:"อาหารไทย", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:1, name:"Chef Apple", local:"อาหารไทย", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
    time:["lunch","dinner"], timeLabel:"Lunch · Dinner", lat:18.7620, lng:98.9920,
    price:"฿50–90", hours:"10:00–19:30 · ⚠ Call first", payment:"Cash · QR Code", address:"29/5 S. Chom Chan, Pa Daet, Mueang Chiang Mai", phone:"062 813 9322", instagram:"",
    priceLevel:1, veg:true, vegan:false, fish:true, meat:true, parking:true,
@@ -537,7 +537,7 @@ const PLACES = [
    coverImg:"listing-1-chef-apple-cover.webp",
    slides:[{img:"listing-1-chef-apple-2.webp",cap:"Ambience"},{img:"listing-1-chef-apple-3.webp",cap:"Khao Soi"},{img:"listing-1-chef-apple-4.webp",cap:"Som Tam"},{img:"listing-1-chef-apple-5.webp",cap:"Pad See Ew"},{img:"listing-1-chef-apple-6.webp",cap:"Ambience"},{img:"listing-1-chef-apple-7.webp",cap:"Tom Yum Fried Rice"}],
    photo:"street-apple.jpg"},
-{id:2, name:"Neng's Clay Oven Roasted Pork", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:2, name:"Neng's Clay Oven Roasted Pork", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
    time:["lunch","dinner"], timeLabel:"Lunch · Dinner", lat:18.7920, lng:99.0055,
    price:"฿80–150", hours:"10:30–22:00", payment:"Cash · QR Code",
    address:"Rattanakosin Rd, Chang Moi, Mueang Chiang Mai",
@@ -552,7 +552,7 @@ const PLACES = [
    coverImg:"listing-2-nengs-cover.webp",
    slides:[{img:"listing-2-nengs-2.webp",cap:"Salt and Chili Pork Belly"},{img:"listing-2-nengs-3.webp",cap:"Roasted Chicken and Sticky Rice"},{img:"listing-2-nengs-4.webp",cap:"Corn Salad"},{img:"listing-2-nengs-5.webp",cap:"Clay Oven Technique"},{img:"listing-2-nengs-6.webp",cap:"Ambience"}],
    photo:"neng_oven"},
-{id:3, name:"Kaprao Nueanuea", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:3, name:"Kaprao Nueanuea", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
    time:["dinner"], timeLabel:"Dinner", lat:18.7986, lng:98.9647,
    price:"฿50–120", hours:"17:00–22:00", payment:"Cash · QR Code",
    address:"Suthep Rd, Su Thep, Mueang Chiang Mai",
@@ -566,7 +566,7 @@ const PLACES = [
    coverImg:"listing-3-kaprao-nueanuea-cover.webp",
    slides:[{img:"listing-3-kaprao-nueanuea-2.webp",cap:"The Stand"},{img:"listing-3-kaprao-nueanuea-3.webp",cap:"Kaprao"},{img:"listing-3-kaprao-nueanuea-4.webp",cap:"Ambience"},{img:"listing-3-kaprao-nueanuea-5.webp",cap:"Kaprao Wagyu"},{img:"listing-3-kaprao-nueanuea-6.webp",cap:"Cooking Station"}],
    photo:"kaprao_egg2"},
-{id:4, name:"Khao Soi Khun Yai", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:4, name:"Khao Soi Khun Yai", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
    time:["lunch"], timeLabel:"Lunch", lat:18.7940, lng:98.9925,
    price:"฿50–80", hours:"10:00–14:00 · Closed Sunday", payment:"Cash · QR Code",
    address:"Sri Poom 8 Alley, Si Phum, Mueang Chiang Mai",
@@ -580,7 +580,7 @@ const PLACES = [
    coverImg:"listing-4-khao-soi-khun-yai-cover.webp",
    slides:[{img:"listing-4-khao-soi-khun-yai-2.webp",cap:"Kanom Jeen Nam Ngiao"},{img:"listing-4-khao-soi-khun-yai-3.webp",cap:"Khao Soi"},{img:"listing-4-khao-soi-khun-yai-4.webp",cap:"Longan Juice"},{img:"listing-4-khao-soi-khun-yai-5.webp",cap:""},{img:"listing-4-khao-soi-khun-yai-6.webp",cap:"Ambience"},{img:"listing-4-khao-soi-khun-yai-7.webp",cap:"Ambience"}],
    photo:"ksy_bowl"},
-{id:5, name:"Kaoneaw Mamuang Ayutthaya-Nong Hoi", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:5, name:"Kaoneaw Mamuang Ayutthaya-Nong Hoi", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
    time:["lunch","dinner"], timeLabel:"Take Away",
    lat:18.7862, lng:99.0107,
    price:"฿60–120", hours:"11:00–20:00", payment:"Cash · QR Code",
@@ -595,7 +595,7 @@ const PLACES = [
    coverImg:"listing-5-kaoneaw-mamuang-cover.webp",
    slides:[{img:"listing-5-kaoneaw-mamuang-2.webp",cap:"Mango Sticky Rice"},{img:"listing-5-kaoneaw-mamuang-3.webp",cap:"Mango Sticky Rice"},{img:"listing-5-kaoneaw-mamuang-4.webp",cap:"The Stand"},{img:"listing-5-kaoneaw-mamuang-5.webp",cap:"The Stand"}],
    photo:"mango_sticky"},
-{id:6, name:"Ba Mee Man", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:6, name:"Ba Mee Man", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
    time:["dinner"], timeLabel:"Dinner",
    lat:18.7895, lng:99.0115,
    price:"฿40–100", hours:"17:00–02:00", payment:"Cash · QR Code",
@@ -610,7 +610,7 @@ const PLACES = [
    coverImg:"listing-6-ba-mee-man-cover.webp",
    slides:[{img:"listing-6-ba-mee-man-2.webp",cap:"Char Siu"},{img:"listing-6-ba-mee-man-3.webp",cap:"Fried Wonton"},{img:"listing-6-ba-mee-man-4.webp",cap:"Wonton Noodle"},{img:"listing-6-ba-mee-man-5.webp",cap:"Ambience"},{img:"listing-6-ba-mee-man-6.webp",cap:"Ambience"},{img:"listing-6-ba-mee-man-7.webp",cap:"Pork Spare Ribs Soup"}],
    photo:"bmm_noodle_lift"},
-{id:7, name:"Kam-Paeng Sausage", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:7, name:"Kam-Paeng Sausage", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
    time:["lunch"], timeLabel:"Lunch",
    lat:18.7747, lng:98.9893,
    price:"฿50–250", hours:"08:00–16:00", payment:"Cash · QR Code",
@@ -625,7 +625,7 @@ const PLACES = [
    coverImg:"listing-7-kam-paeng-sausage-cover.webp",
    slides:[{img:"listing-7-kam-paeng-sausage-2.webp",cap:"Thai Sausage"},{img:"listing-7-kam-paeng-sausage-3.webp",cap:"Thai Sausage"},{img:"listing-7-kam-paeng-sausage-4.webp",cap:"Mix Grill"},{img:"listing-7-kam-paeng-sausage-5.webp",cap:"Ambience"},{img:"listing-7-kam-paeng-sausage-6.webp",cap:"Ambience"}],
    photo:"kps_grill1"},
-{id:8, name:"Cherng Doi Roast Chicken", cat:"street", catLabel:"Local Food", catColor:"var(--street)",
+{id:8, name:"Cherng Doi Roast Chicken", cat:"street", catLabel:"Street Eats", catColor:"var(--street)",
  time:["lunch","dinner"], timeLabel:"Lunch · Dinner",
  lat:18.7964, lng:98.9681, price:"฿50–100", hours:"11:00–20:00 · Closed Monday", payment:"Cash · QR Code",
  address:"2/8 Suk Kasame Rd, Su Thep, Mueang Chiang Mai", phone:"081 881 1407",
@@ -638,7 +638,7 @@ const PLACES = [
  hidden:"The Som Tam Tod — fried shredded papaya served with a spicy dip. Most visitors don't know it exists and order plain som tam instead. It is the sleeper hit of the menu.",
  coverImg:"listing-8-cherng-doi-roast-chicken-cover.webp",
  slides:[{img:"listing-8-cherng-doi-roast-chicken-2.webp",cap:""},{img:"listing-8-cherng-doi-roast-chicken-3.webp",cap:""},{img:"listing-8-cherng-doi-roast-chicken-4.webp",cap:""},{img:"listing-8-cherng-doi-roast-chicken-5.webp",cap:""},{img:"listing-8-cherng-doi-roast-chicken-6.webp",cap:""},{img:"listing-8-cherng-doi-roast-chicken-7.webp",cap:""},{img:"listing-8-cherng-doi-roast-chicken-8.webp",cap:""}]},
-{id:9, name:"Talung Southern Thai", cat:"sitdown", catLabel:"Sit Down", catColor:"var(--sitdown)",
+{id:9, name:"Talung Southern Thai", cat:"sitdown", catLabel:"Local Restaurants", catColor:"var(--sitdown)",
  time:["lunch","dinner"], timeLabel:"Lunch · Dinner",
  lat:18.8237, lng:98.9863,
  price:"฿200–400", hours:"10:30–21:00", payment:"Cash · QR Code · Card",
@@ -653,7 +653,7 @@ const PLACES = [
  hidden:"Ask about the wine. The owner keeps a personal cellar with bottles going back 10+ years — some available by the glass, some by arrangement. Nobody else in this price range offers this.",
  coverImg:"listing-9-talung-southern-thai-cover.webp",
  slides:[{img:"listing-9-talung-southern-thai-2.webp",cap:"Stir-fried prawns with string beans and shrimp paste"},{img:"listing-9-talung-southern-thai-3.webp",cap:"Braised pork belly"},{img:"listing-9-talung-southern-thai-4.webp",cap:"Crab curry"},{img:"listing-9-talung-southern-thai-5.webp",cap:"Tamarind prawns"},{img:"listing-9-talung-southern-thai-6.webp",cap:"Squid ink stir-fry"},{img:"listing-9-talung-southern-thai-7.webp",cap:"The dining room"},{img:"listing-9-talung-southern-thai-8.webp",cap:"Inside Talung"}]},
-  {id:10, name:"Tong Tem Toh", cat:"sitdown", catLabel:"Sit Down", catColor:"var(--sitdown)",
+  {id:10, name:"Tong Tem Toh", cat:"sitdown", catLabel:"Local Restaurants", catColor:"var(--sitdown)",
    time:["dinner"], timeLabel:"Dinner",
    lat:18.7978, lng:98.9739, price:"฿150–300", hours:"18:00–22:00 daily", payment:"Cash · QR · Card",
    address:"11 Nimmana Haeminda Soi 13, Su Thep, Mueang Chiang Mai", phone:"+66 53 894 701",
@@ -667,7 +667,7 @@ const PLACES = [
    coverImg:"listing-10-tong-tem-toh-cover.webp",
    slides:[{img:"listing-10-tong-tem-toh-2.webp",cap:"Pu Ong — crab stir-fried in its own fat"},{img:"listing-10-tong-tem-toh-3.webp",cap:"Kaeng Hang Le — Northern braised pork curry"},{img:"listing-10-tong-tem-toh-4.webp",cap:"A full spread, Northern Thai style"},{img:"listing-10-tong-tem-toh-5.webp",cap:"Live fire grill"},{img:"listing-10-tong-tem-toh-6.webp",cap:"Grilled pork neck"},{img:"listing-10-tong-tem-toh-7.webp",cap:"Stir-fried sayote shoots"},{img:"listing-10-tong-tem-toh-8.webp",cap:"Thai puffball mushroom and bamboo shoot soup"},{img:"listing-10-tong-tem-toh-9.webp",cap:"Fried fish"},{img:"listing-10-tong-tem-toh-10.webp",cap:"Table of dishes"},{img:"listing-10-tong-tem-toh-11.webp",cap:"Spicy stir-fried barometer earthstar mushrooms"},{img:"listing-10-tong-tem-toh-12.webp",cap:"The dining room"}]}
 ,
-  {id:11, name:"Maadae Slow Fish Kitchen", cat:"sitdown", catLabel:"Sit Down", catColor:"var(--sitdown)",
+  {id:11, name:"Maadae Slow Fish Kitchen", cat:"sitdown", catLabel:"Local Restaurants", catColor:"var(--sitdown)",
    time:["lunch","dinner"], timeLabel:"Lunch · Dinner",
    lat:18.7879, lng:99.0013, price:"฿300–600", hours:"11:00–14:00 · 17:00–22:00 · Closed Wednesday",
    payment:"Cash · QR · Card",
@@ -681,7 +681,7 @@ const PLACES = [
    hidden:"The homemade cola sounds like a gimmick — it is not. Also: the mead from Daydrinker's Collective, brewed in Chiang Dao. Order both and you will understand why this place became a whole scene, not just a restaurant.",
    coverImg:"listing-11-maadae-slow-fish-kitchen-cover.webp",
    slides:[{img:"listing-11-maadae-slow-fish-kitchen-2.webp",cap:"Stir-fried prawns with shrimp paste"},{img:"listing-11-maadae-slow-fish-kitchen-3.webp",cap:"Spicy seafood salad"},{img:"listing-11-maadae-slow-fish-kitchen-4.webp",cap:"Deep-fried small anchovies"},{img:"listing-11-maadae-slow-fish-kitchen-5.webp",cap:"The dining room"},{img:"listing-11-maadae-slow-fish-kitchen-6.webp",cap:"Grilled fish"},{img:"listing-11-maadae-slow-fish-kitchen-7.webp",cap:"Crab fried rice"},{img:"listing-11-maadae-slow-fish-kitchen-8.webp",cap:"Stir-fried mussels with holy basil"},{img:"listing-11-maadae-slow-fish-kitchen-9.webp",cap:"Fish & chips"},{img:"listing-11-maadae-slow-fish-kitchen-10.webp",cap:"Spicy prawn and mango salad"},{img:"listing-11-maadae-slow-fish-kitchen-11.webp",cap:"Stir-fried morning glory with garlic"},{img:"listing-11-maadae-slow-fish-kitchen-12.webp",cap:"Garlic fried river prawn"},{img:"listing-11-maadae-slow-fish-kitchen-13.webp",cap:"Maadae at night"},{img:"listing-11-maadae-slow-fish-kitchen-14.webp",cap:"The terrace"}]},
-{id:12, name:"Khao-Sō-i", local:"ข้าวโซอิ", cat:"sitdown", catLabel:"Sit Down", catColor:"var(--sitdown)",
+{id:12, name:"Khao-Sō-i", local:"ข้าวโซอิ", cat:"sitdown", catLabel:"Local Restaurants", catColor:"var(--sitdown)",
    time:["lunch","dinner"], timeLabel:"Lunch · Dinner", lat:18.7751, lng:98.9998,
    price:"฿200–600", hours:"09:00–21:30", payment:"Cash · Card · QR Code",
    address:"430 Charoen Rat Rd, Fa Ham, Mueang Chiang Mai", phone:"061 515 4529",
@@ -696,7 +696,7 @@ const PLACES = [
    coverImg:"listing-12-khao-soi-cover.webp",
    slides:[{img:"listing-12-khao-soi-2.webp",cap:""},{img:"listing-12-khao-soi-3.webp",cap:""},{img:"listing-12-khao-soi-4.webp",cap:""},{img:"listing-12-khao-soi-5.webp",cap:""},{img:"listing-12-khao-soi-6.webp",cap:""},{img:"listing-12-khao-soi-7.webp",cap:""},{img:"listing-12-khao-soi-8.webp",cap:""},{img:"listing-12-khao-soi-9.webp",cap:""},{img:"listing-12-khao-soi-10.webp",cap:""},{img:"listing-12-khao-soi-11.webp",cap:""},{img:"listing-12-khao-soi-12.webp",cap:""},{img:"listing-12-khao-soi-13.webp",cap:""},{img:"listing-12-khao-soi-14.webp",cap:""}],
    photo:""},
-{id:13, name:"Chawee", local:"ฉวี", cat:"sitdown", catLabel:"Sit Down", catColor:"var(--sitdown)",
+{id:13, name:"Chawee", local:"ฉวี", cat:"sitdown", catLabel:"Local Restaurants", catColor:"var(--sitdown)",
    time:["lunch","dinner"], timeLabel:"Lunch · Dinner", lat:18.8021, lng:98.9917,
    price:"฿800–1,000", hours:"11:00–15:00 · 17:00–21:00", payment:"Cash · Card · QR Code",
    address:"84/20 Chotana Rd, Chang Phueak, Mueang Chiang Mai", phone:"084 324 9363",
@@ -711,7 +711,7 @@ const PLACES = [
    coverImg:"listing-13-chawee-cover.webp",
    slides:[{img:"listing-13-chawee-2.webp",cap:"Spicy minced pork with stink beans"},{img:"listing-13-chawee-3.webp",cap:"Millet and corn in coconut milk"},{img:"listing-13-chawee-4.webp",cap:"Tom Jiew Gai"},{img:"listing-13-chawee-5.webp",cap:"Pork ribs in red curry"},{img:"listing-13-chawee-6.webp",cap:"Krathong Thong"},{img:"listing-13-chawee-7.webp",cap:"The full Chawee spread"},{img:"listing-13-chawee-8.webp",cap:"Southern style braised pork belly"},{img:"listing-13-chawee-9.webp",cap:"Khai Tun Goong"},{img:"listing-13-chawee-10.webp",cap:"Chut Phak Sod Nam Prik"},{img:"listing-13-chawee-11.webp",cap:"Northern style fried pork belly"},{img:"listing-13-chawee-12.webp",cap:"The dining room"},{img:"listing-13-chawee-13.webp",cap:"Chawee restaurant"},{img:"listing-13-chawee-14.webp",cap:"Chawee restaurant"}],
    photo:""},
-{id:14, name:"Magnolia Café", local:"แม็กโนเลีย คาเฟ่", cat:"sitdown", catLabel:"Sit Down", catColor:"var(--sitdown)",
+{id:14, name:"Magnolia Café", local:"แม็กโนเลีย คาเฟ่", cat:"sitdown", catLabel:"Local Restaurants", catColor:"var(--sitdown)",
    time:["dinner"], timeLabel:"Dinner", lat:18.7889, lng:98.9989,
    price:"฿400–600", hours:"17:00–22:00 · Closed Wednesday", payment:"Cash · Card · QR Code",
    address:"131/70 Rattanakosin Rd, Chang Moi, Mueang Chiang Mai", phone:"061 684 8222",
@@ -726,7 +726,7 @@ const PLACES = [
    coverImg:"listing-14-magnolia-cafe-cover.webp",
    slides:[{img:"listing-14-magnolia-cafe-2.webp",cap:""},{img:"listing-14-magnolia-cafe-3.webp",cap:""},{img:"listing-14-magnolia-cafe-4.webp",cap:""},{img:"listing-14-magnolia-cafe-5.webp",cap:""},{img:"listing-14-magnolia-cafe-6.webp",cap:""},{img:"listing-14-magnolia-cafe-7.webp",cap:""},{img:"listing-14-magnolia-cafe-8.webp",cap:""},{img:"listing-14-magnolia-cafe-9.webp",cap:""},{img:"listing-14-magnolia-cafe-10.webp",cap:""},{img:"listing-14-magnolia-cafe-11.webp",cap:""},{img:"listing-14-magnolia-cafe-12.webp",cap:""},{img:"listing-14-magnolia-cafe-13.webp",cap:""},{img:"listing-14-magnolia-cafe-14.webp",cap:""},{img:"listing-14-magnolia-cafe-15.webp",cap:""},{img:"listing-14-magnolia-cafe-16.webp",cap:""},{img:"listing-14-magnolia-cafe-17.webp",cap:""},{img:"listing-14-magnolia-cafe-18.webp",cap:""}],
    photo:""},
-{id:15, name:"Blackitch", local:"แบล็คอิทช์", cat:"sitdown", catLabel:"Sit Down", catColor:"var(--sitdown)",
+{id:15, name:"Blackitch", local:"แบล็คอิทช์", cat:"sitdown", catLabel:"Local Restaurants", catColor:"var(--sitdown)",
    time:["lunch","dinner"], timeLabel:"Lunch · Dinner", lat:18.7953, lng:98.9678,
    price:"฿1,000+", hours:"11:30–14:00 · 17:00–22:00 · Closed Tue & Sun", payment:"Cash · Card · QR Code",
    address:"27/1 Nimmanahaeminda Soi 7, Suthep, Mueang Chiang Mai", phone:"083 641 9246",
@@ -951,8 +951,8 @@ let map, markers = [], allMarkers = [];
 
 // ── CAT CONFIG ───────────────────────────────────────────────────────────
 const CAT_CONFIG = {
-  street:   { label:'Local Food',    color:'#e85d3a', emoji:'🌶' },
-  sitdown:  { label:'Sit Down',       color:'#5b8ff0', emoji:'🍽' },
+  street:   { label:'Street Eats',    color:'#e85d3a', emoji:'🌶' },
+  sitdown:  { label:'Local Restaurants',       color:'#5b8ff0', emoji:'🍽' },
   coffee:   { label:'Coffee & Cafe',  color:'#c9a84c', emoji:'☕' },
   wine:     { label:'Natural Wine',   color:'#9b6bb5', emoji:'🍷' },
   bakery:   { label:'Bakery & Snacks',color:'#e8a43a', emoji:'🥐' },
