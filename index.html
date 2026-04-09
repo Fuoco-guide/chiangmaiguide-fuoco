@@ -510,7 +510,11 @@ function cardPhoto(p) {
 function cardInfoGrid(p) {
   const address = p.address ? '<a href="https://www.google.com/maps/search/' + encodeURIComponent(p.name) + '/@' + p.lat + ',' + p.lng + ',17z" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">' + p.address + ' ↗</a>' : (p.howto || '—');
   const phone = p.phone ? '<a href="tel:' + p.phone + '" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">' + p.phone + '</a>' : '—';
-  const social = p.instagram ? '<a href="' + (p.instagram.startsWith('http') ? p.instagram : 'https://instagram.com/' + p.instagram) + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">@' + (p.instagram.startsWith('http') ? p.instagram.replace(/.*instagram\.com\//,'').replace(/\//,'') : p.instagram) + ' ↗</a>' : p.facebook ? '<a href="' + p.facebook + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Facebook ↗</a>' : '—';
+  const _igHandle = p.instagram ? (p.instagram.startsWith('http') ? p.instagram.replace(/.*instagram\.com\//,'').replace(/\//,'') : p.instagram) : '';
+  const _igUrl = p.instagram ? (p.instagram.startsWith('http') ? p.instagram : 'https://instagram.com/' + p.instagram) : '';
+  const _igLink = p.instagram ? '<a href="' + _igUrl + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">@' + _igHandle + ' ↗</a>' : '';
+  const _fbLink = p.facebook ? '<a href="' + p.facebook + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Facebook ↗</a>' : '';
+  const social = [_igLink, _fbLink].filter(Boolean).join(' · ') || '—';
   const cell = (emoji, label, val) => '<div class="cig-cell"><div class="cig-label-row"><span class="cig-emoji">' + emoji + '</span><span class="cig-label">' + label + '</span></div><span class="cig-val">' + val + '</span></div>';
   return '<div class="card-info-grid">' +
     '<div class="cig-row">' + cell('💸','Price', p.price || '—') + cell('🕐','Hours', p.hours || '—') + '</div>' +
@@ -855,7 +859,7 @@ const PLACES = [
 {id:22, name:"The Baristro Asian Style", local:"", cat:"coffee", catLabel:"Coffee & Cafe", catColor:"var(--coffee)",
    time:["allday"], timeLabel:"All Day", lat:18.7899, lng:98.9490,
    price:"฿200–400", hours:"09:00–17:00", payment:"Cash · Card · QR Code",
-   address:"West Chiang Mai", phone:"0924553947", instagram:"", facebook:"https://www.facebook.com/Thebaristroasianstyle",
+   address:"West Chiang Mai", phone:"0924553947", instagram:"https://www.instagram.com/thebaristro/", facebook:"https://www.facebook.com/Thebaristroasianstyle",
    priceLevel:3, veg:true, vegan:false, fish:false, meat:false, parking:true, coffeeOnly:false, food:true, sweets:true,
    hook:"",
    orders:["Signature espresso — ask the barista what they'd drink ⭐","Dessert of the day — seasonal, always worth it ⭐","Filter coffee — clean, well-sourced"],
