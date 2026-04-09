@@ -37,7 +37,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(212,67,15,0.18) 0%,transparent 55%),radial-gradient(ellipse at 20% 80%,rgba(201,168,76,0.07) 0%,transparent 50%)}
 .hero-photo{position:absolute;inset:0;background-color:#1a1510;background-image:url('hero.jpg');background-image:image-set(url('hero.webp') type('image/webp'),url('hero.jpg') type('image/jpeg'));background-size:cover;background-position:center 40%;display:flex;align-items:center;justify-content:center}
 .hero-photo span{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.1);text-align:center;padding:20px}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,11,0.97) 0%,rgba(14,13,11,0.85) 28%,rgba(14,13,11,0.35) 55%,rgba(14,13,11,0.05) 100%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,13,11,0.95) 0%,rgba(14,13,11,0.7) 20%,rgba(14,13,11,0.2) 45%,rgba(14,13,11,0.0) 100%),linear-gradient(to right,rgba(14,13,11,0.6) 0%,rgba(14,13,11,0.0) 50%)}
 .hero-content{position:relative;z-index:2}
 .hero-eyebrow{font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--fire2);margin-bottom:12px;animation:up 0.8s 0.1s ease both;opacity:0.9}
 .hero-title{font-family:'Syne',sans-serif;font-size:clamp(60px,14vw,110px);font-weight:800;line-height:0.92;letter-spacing:-0.02em;margin-bottom:6px;animation:up 0.8s 0.25s ease both}
@@ -305,9 +305,8 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
   <button id="hero-upload-btn" onclick="document.getElementById('hero-input').click()" style="display:none;position:absolute;top:16px;right:16px;z-index:10;background:rgba(14,13,11,0.82);border:1px solid #555;color:#c9a84c;font-size:9px;letter-spacing:0.1em;padding:6px 12px;cursor:pointer;font-family:Syne,sans-serif;text-transform:uppercase;border-radius:4px;">🖼 Hero Photo</button>
   <input type="file" id="hero-input" accept="image/*" style="display:none;" onchange="fuocoSetHero(this)">
   <div class="hero-content">
-    <div class="hero-eyebrow">Fuoco · Field Guide No. 001</div>
     <h1 class="hero-title">Chiang<br><em>Mai</em></h1>
-    <p class="hero-sub">For the serious eater. Not the tourist version.</p>
+    <p class="hero-sub">The guide to where local people eat and drink.</p>
     <div class="hero-bottom">
 
       <div class="hero-count" id="heroCount">11<span>Curated Places</span></div>
