@@ -157,7 +157,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 #map{flex:1;background:#1a1814}
 /* Leaflet overrides */
 .leaflet-container{background:#1a1814;font-family:'DM Sans',sans-serif}
-.leaflet-tile{filter:brightness(0.75) saturate(0.6)}
+.leaflet-tile{filter:saturate(0.85) brightness(0.95)}
 .leaflet-control-zoom a{background:var(--card)!important;color:var(--cream)!important;border-color:var(--border)!important}
 .leaflet-popup-content-wrapper{background:var(--card);color:var(--cream);border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.5);padding:0;overflow:hidden}
 .leaflet-popup-tip{background:var(--card)}
@@ -1244,6 +1244,14 @@ function renderCards(places) {
   document.querySelectorAll('.place-card.fade-in').forEach((el,i) => {
     setTimeout(() => el.classList.add('visible'), i * 40);
   });
+  // Wire card hover → map fly
+  let hoverTimer;
+  document.querySelectorAll('.place-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      hoverTimer = setTimeout(() => flyToPin(parseInt(el.dataset.id)), 300);
+    });
+    el.addEventListener('mouseleave', () => clearTimeout(hoverTimer));
+  });
 }
 
 // ── FILTER ───────────────────────────────────────────────────────────────
@@ -1294,9 +1302,9 @@ function initMap() {
     attributionControl: false,
   });
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
-    attribution: '© OpenStreetMap'
+    attribution: '© OpenStreetMap © CARTO'
   }).addTo(map);
 
   PLACES.forEach(p => {
@@ -1356,6 +1364,7 @@ function highlightCard(id) {
   if (card) {
     card.classList.add('highlighted');
     card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    setTimeout(() => card.classList.remove('highlighted'), 2000);
   }
 }
 
