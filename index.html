@@ -1236,7 +1236,7 @@ function renderCards(places) {
             <div class="exp-label green">— What Nobody Writes About</div>
             <p class="exp-text">${p.hidden}</p>
           </div>
-          <button class="map-link-btn" onclick="event.stopPropagation();window.open('https://www.google.com/maps/search/'+encodeURIComponent('${p.name}')+'/@${p.lat},${p.lng},17z','_blank')">📍 Show on map</button>
+          <button class="map-link-btn" onclick="event.stopPropagation();flyToPin(${p.id})">📍 Show on map</button>
         </div>
       </div>
     </div>`;
@@ -1246,14 +1246,16 @@ function renderCards(places) {
   document.querySelectorAll('.place-card.fade-in').forEach((el,i) => {
     setTimeout(() => el.classList.add('visible'), i * 40);
   });
-  // Wire card hover → map fly
-  let hoverTimer;
-  document.querySelectorAll('.place-card').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      hoverTimer = setTimeout(() => flyToPin(parseInt(el.dataset.id)), 300);
+  // Wire card hover → map fly (desktop only)
+  if (window.innerWidth > 768) {
+    let hoverTimer;
+    document.querySelectorAll('.place-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        hoverTimer = setTimeout(() => flyToPin(parseInt(el.dataset.id)), 300);
+      });
+      el.addEventListener('mouseleave', () => clearTimeout(hoverTimer));
     });
-    el.addEventListener('mouseleave', () => clearTimeout(hoverTimer));
-  });
+  }
 }
 
 // ── FILTER ───────────────────────────────────────────────────────────────
@@ -1330,7 +1332,7 @@ function initMap() {
         <button class="popup-scroll-btn" onclick="scrollToCard(${p.id})">See full entry ↓</button>
       `, { maxWidth: 240, className: '' });
 
-    marker.on('click', () => highlightCard(p.id));
+    marker.on('click', () => { if (window.innerWidth > 768) highlightCard(p.id); });
     markers.push({ id: p.id, marker, cat: p.cat, time: p.time });
   });
 
@@ -1384,6 +1386,7 @@ function highlightCard(id) {
 }
 
 function highlightFromCard(id) {
+  if (window.innerWidth <= 768) return;
   const p = PLACES.find(x => x.id === id);
   const m = markers.find(x => x.id === id);
   if (!p || !m) return;
