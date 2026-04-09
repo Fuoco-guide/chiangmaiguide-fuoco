@@ -235,6 +235,7 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
 
 /* ── MOBILE ────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
+  .hero-photo{background-position:center center}
   .badge-text{display:none}
   .card-top{grid-template-columns:40% 60%;height:280px}
   .card-photo{height:280px}
@@ -305,12 +306,6 @@ footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;justify
   <div class="hero-overlay"></div>
   <button id="hero-upload-btn" onclick="document.getElementById('hero-input').click()" style="display:none;position:absolute;top:16px;right:16px;z-index:10;background:rgba(14,13,11,0.82);border:1px solid #555;color:#c9a84c;font-size:9px;letter-spacing:0.1em;padding:6px 12px;cursor:pointer;font-family:Syne,sans-serif;text-transform:uppercase;border-radius:4px;">🖼 Hero Photo</button>
   <input type="file" id="hero-input" accept="image/*" style="display:none;" onchange="fuocoSetHero(this)">
-  <div id="title-sizer" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;background:rgba(14,13,11,0.9);border:1px solid rgba(255,255,255,0.15);padding:10px 16px;border-radius:100px;display:flex;align-items:center;gap:12px;font-family:DM Sans,sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);">
-    <span>Title size</span>
-    <input type="range" min="40" max="200" value="85" step="1" oninput="document.querySelector('.hero-title').style.fontSize=this.value+'px';document.getElementById('title-val').textContent=this.value+'px'" style="width:160px;accent-color:#d4430f;">
-    <span id="title-val">85px</span>
-    <button onclick="document.getElementById('title-sizer').remove()" style="background:none;border:none;color:rgba(255,255,255,0.3);cursor:pointer;font-size:14px;padding:0 0 0 4px;">✕</button>
-  </div>
   <div class="hero-content">
     <h1 class="hero-title"><span class="hero-initial">C</span>hiang <em>Mai</em></h1>
     <p class="hero-sub">The guide to where local people eat and drink.</p>
