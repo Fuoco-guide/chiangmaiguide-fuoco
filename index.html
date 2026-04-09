@@ -1249,7 +1249,14 @@ function setFilter(type, val, btn) {
 function applyFilters() {
   const filtered = PLACES.filter(p => {
     const catOk = activeFilters.cat === 'all' || p.cat === activeFilters.cat;
-    const timeOk = !activeFilters.time || (Array.isArray(p.time) ? p.time.includes(activeFilters.time) : p.time === activeFilters.time);
+    let timeOk = false;
+    if (!activeFilters.time) {
+      timeOk = true;
+    } else if (activeFilters.time === 'allday') {
+      timeOk = p.time.includes('allday') || (p.time.includes('lunch') && p.time.includes('dinner'));
+    } else {
+      timeOk = p.time.includes(activeFilters.time) && !(p.time.includes('lunch') && p.time.includes('dinner'));
+    }
     return catOk && timeOk;
   });
   renderCards(filtered);
@@ -1362,7 +1369,14 @@ function scrollToCard(id) {
 function downloadKML() {
   const visiblePlaces = PLACES.filter(p => {
     const catOk = activeFilters.cat === 'all' || p.cat === activeFilters.cat;
-    const timeOk = !activeFilters.time || (Array.isArray(p.time) ? p.time.includes(activeFilters.time) : p.time === activeFilters.time);
+    let timeOk = false;
+    if (!activeFilters.time) {
+      timeOk = true;
+    } else if (activeFilters.time === 'allday') {
+      timeOk = p.time.includes('allday') || (p.time.includes('lunch') && p.time.includes('dinner'));
+    } else {
+      timeOk = p.time.includes(activeFilters.time) && !(p.time.includes('lunch') && p.time.includes('dinner'));
+    }
     return catOk && timeOk;
   });
 
