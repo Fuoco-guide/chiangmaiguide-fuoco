@@ -1333,6 +1333,14 @@ function initMap() {
   });
 
   allMarkers = [...markers];
+
+  // Click on map background → fit all visible markers
+  map.on('click', () => {
+    const visible = markers.filter(({marker}) => map.hasLayer(marker));
+    if (visible.length) {
+      map.fitBounds(visible.map(({marker}) => marker.getLatLng()), { padding: [40, 40] });
+    }
+  });
 }
 
 function updateMapMarkers(visiblePlaces) {
@@ -1344,6 +1352,11 @@ function updateMapMarkers(visiblePlaces) {
       if (map.hasLayer(marker)) map.removeLayer(marker);
     }
   });
+  // Fit map to visible markers after filter change
+  const visible = markers.filter(({id}) => visibleIds.has(id));
+  if (visible.length) {
+    map.fitBounds(visible.map(({marker}) => marker.getLatLng()), { padding: [60, 60] });
+  }
 }
 
 function flyToPin(id) {
