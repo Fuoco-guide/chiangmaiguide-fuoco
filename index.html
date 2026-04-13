@@ -1217,7 +1217,7 @@ function renderCards(places) {
     const cc = CAT_CONFIG[p.cat];
     const timeStr = Array.isArray(p.time) ? p.time.join(',') : p.time;
     return `
-    <div class="place-card fade-in${p.id === 1 ? ' card-featured' : ''}" id="card-${p.id}" style="position:relative;" data-id="${p.id}" data-cat="${p.cat}" data-time="${timeStr}" onclick="highlightFromCard(${p.id})" ontouchstart="handleCardTap(${p.id})">
+    <div class="place-card fade-in${p.id === 1 ? ' card-featured' : ''}" id="card-${p.id}" style="position:relative;" data-id="${p.id}" data-cat="${p.cat}" data-time="${timeStr}" onclick="highlightFromCard(${p.id})" ontouchstart="cardTouchStart(${p.id},event)" ontouchend="cardTouchEnd(${p.id},event)">
       ${ADMIN_MODE ? `<button class="edit-pencil-btn" onclick="event.stopPropagation();openEditPanel(${p.id})" title="Edit listing">✎</button>` : ''}
       <div class="card-top">
         <div class="card-photo">
