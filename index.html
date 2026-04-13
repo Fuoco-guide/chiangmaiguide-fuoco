@@ -1411,67 +1411,6 @@ function scrollToCard(id) {
   }
 }
 
-// ── KML DOWNLOAD ─────────────────────────────────────────────────────────
-function downloadKML() {
-  const visiblePlaces = PLACES.filter(p => {
-    const catOk = activeFilters.cat === 'all' || p.cat === activeFilters.cat;
-    let timeOk = false;
-    if (!activeFilters.time) {
-      timeOk = true;
-    } else if (activeFilters.time === 'allday') {
-      timeOk = p.time.includes('allday') || (p.time.includes('lunch') && p.time.includes('dinner'));
-    } else {
-      timeOk = p.time.includes(activeFilters.time) && !(p.time.includes('lunch') && p.time.includes('dinner'));
-    }
-    return catOk && timeOk;
-  });
-
-  const icons = {
-    street:   'http://maps.google.com/mapfiles/kml/paddle/red-circle.png',
-    sitdown:  'http://maps.google.com/mapfiles/kml/paddle/blu-circle.png',
-    producer: 'http://maps.google.com/mapfiles/kml/paddle/grn-circle.png',
-    coffee:   'http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png',
-    wine:     'http://maps.google.com/mapfiles/kml/paddle/purple-circle.png',
-    bakery:   'http://maps.google.com/mapfiles/kml/paddle/orange-circle.png',
-  };
-
-  const nm = 'name';
-  const placemarks = visiblePlaces.map(p => [
-    '<Placemark>',
-    '<' + nm + '>FUOCO: ' + p.name + '</' + nm + '>',
-    '<description><![CDATA[',
-    '<b>' + (CAT_CONFIG[p.cat] ? CAT_CONFIG[p.cat].label : p.cat) + '</b> · ' + p.price + '<br>',
-    '<i>' + p.hook + '</i><br><br>',
-    '<b>Order:</b> ' + p.orders.join(', ') + '<br>',
-    '<b>Hours:</b> ' + p.hours + '<br>',
-    '<b>Payment:</b> ' + p.payment,
-    ']]></description>',
-    '<Style><IconStyle><Icon><href>' + (icons[p.cat] || icons.street) + '</href></Icon></IconStyle></Style>',
-    '<Point><coordinates>' + p.lng + ',' + p.lat + ',0</coordinates></Point>',
-    '</Placemark>'
-  ].join('\n')).join('\n');
-
-  const docName = 'name';
-  const kml = '<?xml version="1.0" encoding="UTF-8"?>\n' +
-    '<kml xmlns="http://www.opengis.net/kml/2.2">\n' +
-    '<Document>\n' +
-    '<' + docName + '>FUOCO - Chiang Mai Field Guide</' + docName + '>\n' +
-    '<description>Curated places for the serious eater.</description>\n' +
-    placemarks + '\n' +
-    '</Document>\n</kml>';
-
-  const blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'FUOCO-ChiangMai.kml';
-  a.click();
-  URL.revokeObjectURL(url);
-
-  const toast = document.getElementById('kmlToast');
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 4000);
-}
 
 // ── SCROLL ANIMATIONS ────────────────────────────────────────────────────
 const observer = new IntersectionObserver(entries => {
