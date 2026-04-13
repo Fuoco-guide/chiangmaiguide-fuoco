@@ -1343,25 +1343,27 @@ function csTouchEnd(e, id) {
 }
 
 // ── DOUBLE-TAP TO EXPAND (mobile) ────────────────────────────────────────
-function handleCardTap(id) {
+var _ctStart = {}, _ctLast = {};
+function cardTouchStart(id, e) {
   if (window.innerWidth > 768) return;
-  var exp = document.getElementById('exp-' + id);
-  if (!exp) return;
-  var btn = document.querySelector('#card-' + id + ' .card-expand-btn');
-  if (btn) toggleExpand(btn, id);
+  _ctStart[id] = { x: e.touches[0].clientX, y: e.touches[0].clientY };
 }
-function openFullStory(id) {
-  var exp = document.getElementById('exp-' + id);
-  if (!exp || exp.classList.contains('open')) return;
-  var btn = document.querySelector('#card-' + id + ' .card-expand-btn');
-  if (btn) toggleExpand(btn, id);
-}
-function closeFullStory(id) {
+function cardTouchEnd(id, e) {
   if (window.innerWidth > 768) return;
-  var exp = document.getElementById('exp-' + id);
-  if (!exp || !exp.classList.contains('open')) return;
-  var btn = document.querySelector('#card-' + id + ' .card-expand-btn');
-  if (btn) toggleExpand(btn, id);
+  var s = _ctStart[id];
+  if (!s) return;
+  var dx = Math.abs(e.changedTouches[0].clientX - s.x);
+  var dy = Math.abs(e.changedTouches[0].clientY - s.y);
+  _ctStart[id] = null;
+  if (dx > 10 || dy > 10) { _ctLast[id] = 0; return; }
+  var now = Date.now();
+  if (_ctLast[id] && now - _ctLast[id] < 350) {
+    _ctLast[id] = 0;
+    var btn = document.querySelector('#card-' + id + ' .card-expand-btn');
+    if (btn) toggleExpand(btn, id);
+  } else {
+    _ctLast[id] = now;
+  }
 }
 
 // ── EXPAND ───────────────────────────────────────────────────────────────
