@@ -1341,16 +1341,9 @@ function csTouchEnd(e, id) {
 }
 
 // ── DOUBLE-TAP TO EXPAND (mobile) ────────────────────────────────────────
-var _tapTimes = {};
 function handleCardTap(id) {
   if (window.innerWidth > 768) return;
-  var now = Date.now();
-  if (_tapTimes[id] && now - _tapTimes[id] < 350) {
-    openFullStory(id);
-    _tapTimes[id] = 0;
-  } else {
-    _tapTimes[id] = now;
-  }
+  openFullStory(id);
 }
 function openFullStory(id) {
   var exp = document.getElementById('exp-' + id);
