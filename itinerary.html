@@ -28,8 +28,9 @@ body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;fo
 .nav-back:hover{color:var(--cream)}
 
 /* ── HERO ── */
-.page-hero{padding:88px 48px 80px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(196,98,45,0.08) 0%,transparent 60%);pointer-events:none}
+.page-hero{padding:120px 48px 110px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background-image:url('itinerary-hero.webp');background-size:cover;background-position:center}
+.page-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55);pointer-events:none}
+.page-hero>*{position:relative;z-index:1}
 .hero-label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--fire2);margin-bottom:28px}
 .hero-headline{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,76px);font-weight:800;line-height:1.05;letter-spacing:-0.025em;margin-bottom:6px;color:#f0ebe0}
 .hero-headline-em{display:block;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--fire2);font-size:clamp(36px,6vw,76px);line-height:1.05;letter-spacing:-0.01em;margin-bottom:28px}
