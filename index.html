@@ -74,20 +74,20 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .filter-row{display:flex;align-items:center;gap:6px;padding:14px 0;overflow-x:auto;scrollbar-width:none}
 .filter-row::-webkit-scrollbar{display:none}
 .filter-sep{flex:1}
-.f-btn{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:8px 16px;border-radius:100px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:rgba(242,237,228,0.75);cursor:pointer;transition:all 0.18s;white-space:nowrap;flex-shrink:0}
-.f-btn[data-time]{font-size:9px;padding:7px 14px}
-.f-btn:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35);color:#f2ede4;transform:translateY(-1px)}
-.f-btn.active{color:white;border-color:transparent;transform:none}
-.f-btn[data-cat="all"].active{background:var(--fire)}
+.f-btn{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:9px 18px;border-radius:100px;border:1px solid rgba(255,255,255,0.55);background:#1e1c19;color:#ffffff;cursor:pointer;transition:background 0.15s,border-color 0.15s,transform 0.15s;white-space:nowrap;flex-shrink:0}
+.f-btn[data-time]{font-size:9px;padding:8px 16px}
+.f-btn:hover{background:#2e2b27;border-color:#ffffff;transform:translateY(-1px)}
+.f-btn.active{border-color:transparent;color:#ffffff;transform:none}
+.f-btn[data-cat="all"].active{background:#C4622D}
 .f-btn[data-cat="street"].active{background:var(--street)}
 .f-btn[data-cat="sitdown"].active{background:var(--sitdown)}
 .f-btn[data-cat="producer"].active{background:var(--producer)}
 .f-btn[data-cat="coffee"].active{background:var(--coffee)}
 .f-btn[data-cat="wine"].active{background:var(--wine)}
 .f-btn[data-cat="bakery"].active{background:var(--bakery)}
-.f-btn[data-time="lunch"].active{background:rgba(212,67,15,0.8)}
-.f-btn[data-time="dinner"].active{background:rgba(91,106,240,0.8)}
-.f-btn[data-time="allday"].active{background:rgba(90,173,122,0.8)}
+.f-btn[data-time="lunch"].active{background:#C4622D}
+.f-btn[data-time="dinner"].active{background:#C4622D}
+.f-btn[data-time="allday"].active{background:#C4622D}
 .results-count{padding:8px 40px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border)}
 
 /* ── MAIN LAYOUT ── */
