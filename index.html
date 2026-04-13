@@ -1343,7 +1343,10 @@ function csTouchEnd(e, id) {
 // ── DOUBLE-TAP TO EXPAND (mobile) ────────────────────────────────────────
 function handleCardTap(id) {
   if (window.innerWidth > 768) return;
-  openFullStory(id);
+  var exp = document.getElementById('exp-' + id);
+  if (!exp) return;
+  var btn = document.querySelector('#card-' + id + ' .card-expand-btn');
+  if (btn) toggleExpand(btn, id);
 }
 function openFullStory(id) {
   var exp = document.getElementById('exp-' + id);
