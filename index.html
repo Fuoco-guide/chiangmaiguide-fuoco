@@ -1220,7 +1220,7 @@ function renderCards(places) {
     <div class="place-card fade-in${p.id === 1 ? ' card-featured' : ''}" id="card-${p.id}" style="position:relative;" data-id="${p.id}" data-cat="${p.cat}" data-time="${timeStr}" onclick="highlightFromCard(${p.id})" ontouchstart="handleCardTap(${p.id})">
       ${ADMIN_MODE ? `<button class="edit-pencil-btn" onclick="event.stopPropagation();openEditPanel(${p.id})" title="Edit listing">✎</button>` : ''}
       <div class="card-top">
-        <div class="card-photo" ontouchstart="event.stopPropagation();closeFullStory(${p.id})">
+        <div class="card-photo">
           <div class="card-photo-inner" style="background:linear-gradient(135deg,${cc.color}22,${cc.color}11);overflow:hidden">
             ${cardPhoto(p)}
           </div>
