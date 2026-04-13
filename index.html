@@ -578,7 +578,7 @@ function cardGallery(p) {
   const scrollId = 'cs-' + p.id;
   return '<div class="card-carousel">' +
     '<button class="carousel-btn prev" onclick="event.stopPropagation();carouselScroll(\'' + scrollId + '\',-1)" aria-label="Previous">‹</button>' +
-    '<div class="carousel-scroll" id="' + scrollId + '" onscroll="carouselUpdateBtns(this)">' + items + '</div>' +
+    '<div class="carousel-scroll" id="' + scrollId + '" onscroll="carouselUpdateBtns(this)" ontouchstart="csTouchStart(event)" ontouchend="csTouchEnd(event,\'' + scrollId + '\')">' + items + '</div>' +
     '<button class="carousel-btn next" onclick="event.stopPropagation();carouselScroll(\'' + scrollId + '\',1)" aria-label="Next">›</button>' +
     '</div>';
 }
