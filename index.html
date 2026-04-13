@@ -1323,6 +1323,17 @@ function applyFilters() {
   updateMapMarkers(filtered);
 }
 
+// ── CAROUSEL SWIPE (mobile) ──────────────────────────────────────────────
+var _csTx = 0;
+function csTouchStart(e) { _csTx = e.touches[0].clientX; }
+function csTouchEnd(e, id) {
+  if (window.innerWidth > 768) return;
+  var dx = e.changedTouches[0].clientX - _csTx;
+  if (Math.abs(dx) < 50) return;
+  e.preventDefault();
+  carouselScroll(id, dx < 0 ? 1 : -1);
+}
+
 // ── DOUBLE-TAP TO EXPAND (mobile) ────────────────────────────────────────
 var _tapTimes = {};
 function handleCardTap(id) {
