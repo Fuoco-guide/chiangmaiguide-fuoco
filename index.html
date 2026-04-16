@@ -1313,9 +1313,9 @@ function applyFilters() {
     if (!activeFilters.time) {
       timeOk = true;
     } else if (activeFilters.time === 'allday') {
-      timeOk = p.time.includes('allday') || (p.time.includes('lunch') && p.time.includes('dinner'));
+      timeOk = p.time.includes('allday');
     } else {
-      timeOk = p.time.includes(activeFilters.time) && !(p.time.includes('lunch') && p.time.includes('dinner'));
+      timeOk = p.time.includes(activeFilters.time);
     }
     return catOk && timeOk;
   });
