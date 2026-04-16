@@ -1325,6 +1325,7 @@ function setFilter(type, val, btn) {
   if (type === 'cat' && val === 'all') btn.classList.add('active');
 
   applyFilters();
+  document.querySelector('.cards-side').scrollTop = 0;
 }
 
 function applyFilters() {
