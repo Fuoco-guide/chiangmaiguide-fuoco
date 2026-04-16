@@ -1276,10 +1276,7 @@ function renderCards(places) {
     </div>`;
   }).join('');
 
-  // Observe fade-ins
-  document.querySelectorAll('.place-card.fade-in').forEach((el,i) => {
-    setTimeout(() => el.classList.add('visible'), i * 40);
-  });
+  // Cards rendered visible immediately — no setTimeout race condition
   // Wire card hover → map fly (desktop only)
   if (window.innerWidth > 768) {
     let hoverTimer;
