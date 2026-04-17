@@ -61,6 +61,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .pwa-btn{display:none;align-items:center;gap:6px;background:rgba(212,83,0,0.15);border:1px solid rgba(212,83,0,0.35);color:var(--fire2);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;cursor:pointer;letter-spacing:0.02em;transition:background 0.2s,border-color 0.2s;white-space:nowrap}
 .pwa-btn:hover{background:rgba(212,83,0,0.28);border-color:rgba(212,83,0,0.6)}
 .pwa-btn.visible{display:flex}
+.pwa-btn .pwa-txt-mobile{display:none}.pwa-btn .pwa-txt-desktop{display:inline}
+@media(max-width:900px){.pwa-btn .pwa-txt-mobile{display:inline}.pwa-btn .pwa-txt-desktop{display:none}}
 .hero-count span{font-size:10px;font-weight:400;color:var(--muted);display:block;letter-spacing:0.1em;text-transform:uppercase}
 
 /* ── INTRO ── */
