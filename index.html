@@ -1508,9 +1508,12 @@ function highlightFromCard(id) {
 function scrollToCard(id) {
   const card = document.getElementById(`card-${id}`);
   if (card) {
-    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    card.classList.add('highlighted');
-    setTimeout(() => card.classList.remove('highlighted'), 2000);
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const exp = document.getElementById(`exp-${id}`);
+    const btn = card.querySelector('.card-expand-btn');
+    if (exp && btn && !exp.classList.contains('open')) {
+      setTimeout(() => toggleExpand(btn, id), 400);
+    }
   }
 }
 
