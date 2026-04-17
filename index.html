@@ -1907,13 +1907,24 @@ document.addEventListener('keydown', function(e) {
 
 // ── PWA INSTALL ────────────────────────────────────────────────────────────
 let _pwaPrompt = null;
+const _isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+const _isInStandalone = window.navigator.standalone === true;
+
+// Inject iOS tip element
+document.body.insertAdjacentHTML('beforeend', `<div class="pwa-ios-tip" id="pwaIosTip">Tap <strong>Share ↑</strong> then <strong>"Add to Home Screen"</strong> to save FUOCO on your phone.<span class="tip-close" id="pwaIosTipClose">Got it</span></div>`);
+
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   _pwaPrompt = e;
   const btn = document.getElementById('pwaInstallBtn');
   if (btn) btn.classList.add('visible');
 });
+
 document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
+  if (_isIOS && !_isInStandalone) {
+    document.getElementById('pwaIosTip').classList.add('show');
+    return;
+  }
   if (!_pwaPrompt) return;
   _pwaPrompt.prompt();
   const { outcome } = await _pwaPrompt.userChoice;
@@ -1922,9 +1933,21 @@ document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
   }
   _pwaPrompt = null;
 });
+
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'pwaIosTipClose') {
+    document.getElementById('pwaIosTip').classList.remove('show');
+  }
+});
+
 window.addEventListener('appinstalled', () => {
   document.getElementById('pwaInstallBtn').classList.remove('visible');
 });
+
+// Hide button if already installed
+if (_isInStandalone) {
+  document.getElementById('pwaInstallBtn').style.display = 'none';
+}
 </script>
 
 </body>
