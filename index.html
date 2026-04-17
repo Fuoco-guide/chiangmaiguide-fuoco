@@ -1246,8 +1246,8 @@ function renderCards(places) {
   grid.innerHTML = places.map(p => {
     const cc = CAT_CONFIG[p.cat];
     const timeStr = Array.isArray(p.time) ? p.time.join(',') : p.time;
-    const closedM = (p.hours||'').match(/·?\s*closed\s+(\w+)/i);
-    const closedBadge = closedM ? `<div class="closed-badge">✕ Closed ${closedM[1]}</div>` : '';
+    const closedM = (p.hours||'').match(/·?\s*closed\s+(.+)$/i);
+    const closedBadge = closedM ? `<div class="closed-badge">✕ Closed ${closedM[1].trim()}</div>` : '';
     return `
     <div class="place-card fade-in visible" id="card-${p.id}" style="position:relative;" data-id="${p.id}" data-cat="${p.cat}" data-time="${timeStr}" onclick="highlightFromCard(${p.id})" ontouchstart="cardTouchStart(${p.id},event)" ontouchend="cardTouchEnd(${p.id},event)">
       ${closedBadge}
