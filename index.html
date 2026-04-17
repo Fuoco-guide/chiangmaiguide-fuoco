@@ -1279,7 +1279,7 @@ function renderCards(places) {
           <div class="card-orders">
             <span class="orders-label">Must order</span>
             <div class="card-pills">
-              ${p.orders.slice(0, closedM && window.innerWidth <= 900 ? 2 : 3).map(o => { const short = o.split(' — ')[0]; return `<span class="order-pill"><span class="pill-short">${short}</span><span class="pill-full">${o}</span></span>`; }).join('')}
+              ${((window.innerWidth <= 900 && p.ordersMobile) ? p.ordersMobile : p.orders).slice(0, closedM && window.innerWidth <= 900 ? 2 : 3).map(o => { const short = o.split(' — ')[0]; return `<span class="order-pill"><span class="pill-short">${short}</span><span class="pill-full">${o}</span></span>`; }).join('')}
             </div>
           </div>
           ${cardInfoGrid(p)}
