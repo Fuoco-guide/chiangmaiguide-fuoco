@@ -586,9 +586,12 @@ function cardInfoGrid(p) {
   const phone = p.phone ? '<a href="tel:' + p.phone + '" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">' + p.phone + '</a>' : '—';
   const _igUrl = p.instagram ? (p.instagram.startsWith('http') ? p.instagram : 'https://instagram.com/' + p.instagram) : '';
   const _igLink = p.instagram ? '<a href="' + _igUrl + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Instagram ↗️</a>' : '';
-  const _fbLink = p.facebook ? '<a href="' + p.facebook + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Facebook ↗️</a>' : '';
+  const isMobile = window.innerWidth <= 900;
+  const showFb = p.facebook && !(isMobile && p.noFacebookMobile);
+  const _fbLink = showFb ? '<a href="' + p.facebook + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Facebook ↗️</a>' : '';
   const social = [_igLink, _fbLink].filter(Boolean).join(' · ') || '—';
-  const hoursDisplay = (p.hours || '—').replace(/\s*·?\s*closed\s+.+$/i, '').trim();
+  const hoursRaw = (isMobile && p.hoursMobile) ? p.hoursMobile : (p.hours || '—');
+  const hoursDisplay = hoursRaw.replace(/\s*·?\s*closed\s+.+$/i, '').trim();
   const cell = (emoji, label, val) => '<div class="cig-cell"><div class="cig-label-row"><span class="cig-emoji">' + emoji + '</span><span class="cig-label">' + label + '</span></div><span class="cig-val">' + val + '</span></div>';
   return '<div class="card-info-grid">' +
     '<div class="cig-row">' + cell('💸','Price', p.price || '—') + cell('🕐','Hours', hoursDisplay) + '</div>' +
