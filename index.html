@@ -587,9 +587,10 @@ function cardInfoGrid(p) {
   const _igLink = p.instagram ? '<a href="' + _igUrl + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Instagram ↗️</a>' : '';
   const _fbLink = p.facebook ? '<a href="' + p.facebook + '" target="_blank" style="color:var(--fire2);text-decoration:none" onclick="event.stopPropagation()">Facebook ↗️</a>' : '';
   const social = [_igLink, _fbLink].filter(Boolean).join(' · ') || '—';
+  const hoursDisplay = (p.hours || '—').replace(/\s*·?\s*closed\s+\w+/i, '').trim();
   const cell = (emoji, label, val) => '<div class="cig-cell"><div class="cig-label-row"><span class="cig-emoji">' + emoji + '</span><span class="cig-label">' + label + '</span></div><span class="cig-val">' + val + '</span></div>';
   return '<div class="card-info-grid">' +
-    '<div class="cig-row">' + cell('💸','Price', p.price || '—') + cell('🕐','Hours', p.hours || '—') + '</div>' +
+    '<div class="cig-row">' + cell('💸','Price', p.price || '—') + cell('🕐','Hours', hoursDisplay) + '</div>' +
     '<div class="cig-row">' + cell('💳','Payment', p.payment || '—') + cell('📍','Address', address) + '</div>' +
     '<div class="cig-row">' + cell('📞','Phone', phone) + cell('📸','Social', social) + '</div>' +
   '</div>';
