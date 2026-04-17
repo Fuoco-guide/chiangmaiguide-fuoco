@@ -1437,10 +1437,9 @@ function initMap() {
           <div class="popup-cat" style="color:${cc.color}">${cc.emoji} ${cc.label}</div>
           <div class="popup-name">${p.name}</div>
           <div class="popup-sub">${p.local} · ${p.price} · ${p.timeLabel}</div>
-          <div class="popup-hook">${p.hook}</div>
         </div>
         <button class="popup-scroll-btn" onclick="scrollToCard(${p.id})">See full entry ↓</button>
-      `, { maxWidth: 240, className: '' });
+      `, { maxWidth: 280, className: '' });
 
     marker.on('click', () => { if (window.innerWidth > 768) highlightCard(p.id); });
     markers.push({ id: p.id, marker, cat: p.cat, time: p.time });
